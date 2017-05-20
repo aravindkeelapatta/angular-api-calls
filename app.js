@@ -1,16 +1,16 @@
-var app = angular.module("myApp", []);
+var app = angular.module("myApp", ['ngResource']);
 
 
 
-app.controller("myController", ["$scope", "$http", function($scope,$http) {
+app.controller("myController", ["$scope", "$resource", function($scope,$resource) {
 	$scope.message = "Angular Api Calls";
 
 
 
 	$scope.getWeatherDetails = function() {
-	$http.get("https://jsonplaceholder.typicode.com/posts/1")
-	.then(function(response) {
-		console.log(response.data)
+	$resource("https://jsonplaceholder.typicode.com/posts/1")
+	.get(function(data) {
+		console.log(data)
 	 })
    }
 
